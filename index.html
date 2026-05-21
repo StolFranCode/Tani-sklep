@@ -723,6 +723,90 @@ footer a:hover { color: var(--yellow); }
   box-shadow: 6px 6px 0 var(--yellow);
 }
 
+/* === PRODUKTY Z BAZY === */
+.produkty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.kat-sekcja { margin-bottom: 8px; }
+.kat-tytul {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  margin-top: 28px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--yellow);
+}
+.produkt-karta {
+  border: var(--border);
+  padding: 16px;
+  background: var(--cream);
+  box-shadow: 3px 3px 0 var(--black);
+  position: relative;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.produkt-karta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--red);
+}
+.produkt-karta.przecena { border-color: var(--red); }
+.przecena-badge {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: var(--red);
+  color: var(--yellow);
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  border: 2px solid var(--black);
+}
+.produkt-nazwa {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.produkt-opis {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.produkt-cena {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.stara-cena {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+.nowa-cena {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--red);
+}
+#produkty-container { margin-top: 16px; }
+.brak-produktow {
+  font-family: 'Special Elite', monospace;
+  letter-spacing: 0.1em;
+  color: #888;
+  padding: 32px 0;
+  text-align: center;
+}
+
 /* === TRANSLATIONS === */
 [data-lang] { display: none; }
 [data-lang].active { display: block; }
@@ -976,71 +1060,10 @@ footer a:hover { color: var(--yellow); }
       <h2>Our products</h2>
     </div>
 
-    <div class="cat-grid">
-      <div class="cat-item">
-        <span class="cat-icon">🥬</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Warzywa<br/>i owoce</span>
-          <span data-lang="ua">Овочі<br/>та фрукти</span>
-          <span data-lang="en">Vegetables<br/>& fruit</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🥛</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Nabiał<br/>i jaja</span>
-          <span data-lang="ua">Молочні<br/>продукти</span>
-          <span data-lang="en">Dairy<br/>& eggs</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🍞</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Pieczywo<br/>i ciasta</span>
-          <span data-lang="ua">Хліб<br/>і випічка</span>
-          <span data-lang="en">Bread<br/>& pastry</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🧴</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Chemia<br/>domowa</span>
-          <span data-lang="ua">Побутова<br/>хімія</span>
-          <span data-lang="en">Household<br/>chemicals</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🧃</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Napoje<br/>i przekąski</span>
-          <span data-lang="ua">Напої<br/>і снеки</span>
-          <span data-lang="en">Drinks<br/>& snacks</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🏫</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Artykuły<br/>szkolne</span>
-          <span data-lang="ua">Шкільне<br/>приладдя</span>
-          <span data-lang="en">School<br/>supplies</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🧹</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Sprzęt<br/>porządkowy</span>
-          <span data-lang="ua">Засоби<br/>для прибирання</span>
-          <span data-lang="en">Cleaning<br/>tools</span>
-        </div>
-      </div>
-      <div class="cat-item">
-        <span class="cat-icon">🐾</span>
-        <div class="cat-name">
-          <span data-lang="pl" class="active">Karma<br/>dla zwierząt</span>
-          <span data-lang="ua">Корм<br/>для тварин</span>
-          <span data-lang="en">Pet<br/>food</span>
-        </div>
-      </div>
+    <div id="produkty-container">
+      <p style="font-family:'Special Elite',monospace;letter-spacing:0.1em;color:var(--red);">
+        ⏳ Ładowanie produktów...
+      </p>
     </div>
   </div>
 </div>
@@ -1353,5 +1376,101 @@ function handleSubmit(e) {
 // Init on load
 setLang('pl');
 </script>
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://jqarrtdzdpnvcwgvbvlr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Wbd9Jt7DGhdA1jxpYzZEXg_mo0DRJ82';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const ETYKIETY_KATEGORII = {
+  'warzywa':   { pl: '🥬 Warzywa i owoce',       ua: '🥬 Овочі та фрукти',        en: '🥬 Vegetables & fruit' },
+  'nabiał':    { pl: '🥛 Nabiał i jaja',          ua: '🥛 Молочні продукти',        en: '🥛 Dairy & eggs' },
+  'pieczywo':  { pl: '🍞 Pieczywo',               ua: '🍞 Хліб і випічка',          en: '🍞 Bread & pastry' },
+  'chemia':    { pl: '🧴 Chemia domowa',           ua: '🧴 Побутова хімія',          en: '🧴 Household chemicals' },
+  'napoje':    { pl: '🧃 Napoje i przekąski',      ua: '🧃 Напої і снеки',           en: '🧃 Drinks & snacks' },
+  'szkolne':   { pl: '🏫 Artykuły szkolne',        ua: '🏫 Шкільне приладдя',        en: '🏫 School supplies' },
+  'porządki':  { pl: '🧹 Sprzęt porządkowy',       ua: '🧹 Засоби для прибирання',   en: '🧹 Cleaning tools' },
+  'zwierzęta': { pl: '🐾 Karma dla zwierząt',      ua: '🐾 Корм для тварин',         en: '🐾 Pet food' },
+};
+
+function etykietaKat(kat, lang) {
+  const k = (kat || '').toLowerCase().trim();
+  if (ETYKIETY_KATEGORII[k]) return ETYKIETY_KATEGORII[k][lang] || kat;
+  return kat;
+}
+
+async function ladujProdukty() {
+  const lang = window.currentLang || 'pl';
+  const kontener = document.getElementById('produkty-container');
+
+  const { data: produkty, error } = await db
+    .from('produkty')
+    .select('*')
+    .eq('dostepny', true)
+    .order('kategoria')
+    .order('nazwa');
+
+  if (error) {
+    kontener.innerHTML = '<p class="brak-produktow">Nie udało się załadować produktów.</p>';
+    console.error(error);
+    return;
+  }
+
+  if (!produkty || produkty.length === 0) {
+    const komunikat = {
+      pl: 'Brak produktów — zajrzyj wkrótce!',
+      ua: 'Немає товарів — заходьте незабаром!',
+      en: 'No products yet — check back soon!'
+    };
+    kontener.innerHTML = `<p class="brak-produktow">${komunikat[lang]}</p>`;
+    return;
+  }
+
+  // Grupuj po kategoriach
+  const kategorie = {};
+  produkty.forEach(p => {
+    const k = (p.kategoria || 'inne').toLowerCase().trim();
+    if (!kategorie[k]) kategorie[k] = [];
+    kategorie[k].push(p);
+  });
+
+  let html = '';
+  for (const [kat, items] of Object.entries(kategorie)) {
+    html += `<div class="kat-sekcja">
+      <h3 class="kat-tytul">${etykietaKat(kat, lang)}</h3>
+      <div class="produkty-grid">`;
+
+    items.forEach(p => {
+      const maP = p.cena_przed_przecena && Number(p.cena_przed_przecena) > Number(p.cena);
+      const stara = maP ? `<span class="stara-cena">${Number(p.cena_przed_przecena).toFixed(2)} zł</span>` : '';
+      const badge = maP ? `<div class="przecena-badge">PROMOCJA</div>` : '';
+      const opis = p.opis ? `<div class="produkt-opis">${p.opis}</div>` : '';
+
+      html += `
+        <div class="produkt-karta${maP ? ' przecena' : ''}">
+          ${badge}
+          <div class="produkt-nazwa">${p.nazwa}</div>
+          ${opis}
+          <div class="produkt-cena">
+            ${stara}
+            <span class="nowa-cena">${Number(p.cena).toFixed(2)} zł</span>
+          </div>
+        </div>`;
+    });
+
+    html += `</div></div>`;
+  }
+
+  kontener.innerHTML = html;
+}
+
+// Załaduj produkty po załadowaniu strony
+document.addEventListener('DOMContentLoaded', ladujProdukty);
+
+// Przeładuj przy zmianie języka
+const _origSetLang = window.setLang;
+</script>
+
 </body>
 </html>
