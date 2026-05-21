@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TANI — Sklep Osiedlowy | Rabka-Zdrój</title>
+<meta name="description" content="Sklep osiedlowy TANI w Rabce-Zdroju. Warzywa, chemia, artykuły spożywcze. Działamy od 1999 roku."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --yellow: #F5C800;
+  --red: #D91B1B;
+  --black: #1A1008;
+  --cream: #FDF6E3;
+  --cream2: #F5ECD0;
+  --offwhite: #FAF3DC;
+  --border: 3px solid #1A1008;
+  --border-thick: 5px solid #1A1008;
+  --shadow: 5px 5px 0 #1A1008;
+  --shadow-red: 5px 5px 0 #D91B1B;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  /* subtle noise texture */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* === LANGUAGE SWITCHER === */
+.lang-bar {
+  background: var(--black);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--yellow);
+}
+.lang-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border: 1.5px solid #555;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+.lang-btn.active, .lang-btn:hover {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+}
+
+/* === HEADER / SZYLD === */
+header {
+  background: var(--yellow);
+  border-bottom: var(--border-thick);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-stripes {
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0px, var(--red) 20px,
+    var(--yellow) 20px, var(--yellow) 40px
+  );
+  border-bottom: var(--border);
+}
+
+.header-inner {
+  padding: 32px 40px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo-main {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(64px, 12vw, 110px);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--red);
+  text-shadow: 6px 6px 0 var(--black);
+  letter-spacing: -2px;
+}
+
+.logo-tagline {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(12px, 2vw, 16px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 4px 0;
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+}
+
+.header-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--red);
+  border: var(--border-thick);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transform: rotate(-5deg);
+  gap: 2px;
+}
+
+.badge-year {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  color: #ffd;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.badge-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+}
+
+/* === NAV === */
+nav {
+  background: var(--red);
+  border-bottom: var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+nav a {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  text-decoration: none;
+  padding: 14px 24px;
+  border-right: 2px solid rgba(255,255,255,0.15);
+  transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+/* === SECTIONS === */
+section {
+  padding: 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 28px;
+  border-left: 6px solid var(--yellow);
+  padding-left: 16px;
+}
+
+/* === HERO / ABOUT === */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 680px) {
+  .about-grid { grid-template-columns: 1fr; }
+  section { padding: 40px 20px; }
+  .header-inner { padding: 24px 20px 20px; }
+  nav a { padding: 12px 16px; font-size: 11px; }
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.fact-card {
+  background: var(--black);
+  color: var(--yellow);
+  border: var(--border);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-red);
+  margin-bottom: 20px;
+}
+
+.fact-card strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.fact-card span {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.owner-box {
+  background: var(--yellow);
+  border: var(--border-thick);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.owner-box::before {
+  content: '★';
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  font-size: 20px;
+  color: var(--red);
+  background: var(--yellow);
+  padding: 0 6px;
+  line-height: 1;
+  border: 2px solid var(--black);
+}
+
+.owner-box p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.owner-box .owner-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* === CATEGORIES === */
+#oferta {
+  background: var(--cream2);
+  max-width: 100%;
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+
+#oferta .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+@media (max-width: 680px) {
+  #oferta .inner { padding: 40px 20px; }
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.cat-item {
+  border: var(--border);
+  padding: 20px 16px;
+  text-align: center;
+  background: var(--cream);
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+  cursor: default;
+}
+
+.cat-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--red);
+}
+
+.cat-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+  filter: grayscale(0.1);
+}
+
+.cat-name {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* === SKLEPY / LOCATIONS === */
+.shops-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 680px) {
+  .shops-grid { grid-template-columns: 1fr; }
+}
+
+.shop-card {
+  border: var(--border-thick);
+  background: var(--cream);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.shop-header {
+  background: var(--red);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: var(--border);
+}
+
+.shop-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--black);
+}
+
+.shop-title {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffd;
+  line-height: 1.4;
+}
+
+.shop-body {
+  padding: 20px;
+}
+
+.shop-body p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.shop-body p span.icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  padding: 6px 14px;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.map-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+/* === MAPA === */
+.map-container {
+  border: var(--border-thick);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 380px;
+  display: block;
+  border: none;
+  filter: sepia(20%) contrast(95%);
+}
+
+/* === KONTAKT / FORMULARZ === */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 680px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 8px;
+}
+
+.contact-info p {
+  font-size: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.allegro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FF6600;
+  color: #fff;
+  border: var(--border);
+  padding: 8px 16px;
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  box-shadow: var(--shadow);
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+input, textarea, select {
+  border: var(--border);
+  background: #fff;
+  padding: 10px 14px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  color: var(--black);
+  outline: none;
+  transition: box-shadow 0.15s;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 4px 4px 0 var(--yellow);
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+.form-lang-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.lang-radio {
+  display: none;
+}
+
+.lang-radio-label {
+  border: 2px solid var(--black);
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  background: var(--cream);
+  transition: background 0.1s;
+}
+
+.lang-radio:checked + .lang-radio-label {
+  background: var(--yellow);
+  border-color: var(--black);
+  font-weight: bold;
+}
+
+.submit-btn {
+  background: var(--red);
+  color: var(--yellow);
+  border: var(--border-thick);
+  padding: 14px 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+  letter-spacing: 0.04em;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--black);
+}
+
+.submit-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+/* === SUCCESS MESSAGE === */
+.form-success {
+  display: none;
+  background: var(--yellow);
+  border: var(--border-thick);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.form-success p {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* === FOOTER === */
+footer {
+  background: var(--black);
+  color: var(--cream);
+  border-top: var(--border-thick);
+  padding: 40px;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 680px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  footer { padding: 32px 20px; }
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+  text-shadow: 3px 3px 0 var(--red);
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: #888;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+footer h4 {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 12px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
+}
+
+footer p, footer a {
+  font-size: 13px;
+  color: #aaa;
+  text-decoration: none;
+  line-height: 1.8;
+  display: block;
+}
+
+footer a:hover { color: var(--yellow); }
+
+/* === DIVIDER === */
+.divider {
+  border: none;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0px, var(--red) 20px,
+    var(--yellow) 20px, var(--yellow) 40px,
+    var(--black) 40px, var(--black) 44px
+  );
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+}
+
+/* === ALLEGRO BANNER === */
+.allegro-banner {
+  background: var(--black);
+  border: var(--border-thick);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-red);
+  margin-top: 48px;
+}
+
+.allegro-banner p {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.allegro-banner span {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaa;
+  display: block;
+  margin-top: 4px;
+}
+
+.btn-allegro {
+  background: #FF6600;
+  color: #fff;
+  border: var(--border);
+  padding: 12px 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--yellow);
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+
+.btn-allegro:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--yellow);
+}
+
+/* === TRANSLATIONS === */
+[data-lang] { display: none; }
+[data-lang].active { display: block; }
+[data-lang-inline] { display: none; }
+[data-lang-inline].active { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar" role="navigation" aria-label="Wybór języka">
+  <button class="lang-btn active" onclick="setLang('pl')" aria-label="Polski">PL</button>
+  <button class="lang-btn" onclick="setLang('ua')" aria-label="Українська">UA</button>
+  <button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-stripes"></div>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-main">TANI</div>
+      <div class="logo-tagline">
+        <span data-lang="pl" class="active">Sklep Osiedlowy · Rabka-Zdrój</span>
+        <span data-lang-inline="ua">Сусідський магазин · Рабка-Здруй</span>
+        <span data-lang-inline="en">Neighbourhood Store · Rabka-Zdrój</span>
+      </div>
+    </div>
+    <div class="header-badge">
+      <div class="badge-circle" aria-label="Działamy od 1999 roku">
+        <span class="badge-year">
+          <span data-lang="pl" class="active">od</span>
+          <span data-lang-inline="ua">з</span>
+          <span data-lang-inline="en">since</span>
+        </span>
+        <span class="badge-num">1999</span>
+        <span class="badge-year">
+          <span data-lang="pl" class="active">roku</span>
+          <span data-lang-inline="ua">року</span>
+          <span data-lang-inline="en">&nbsp;</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Menu główne">
+  <a href="#onas">
+    <span data-lang="pl" class="active">O nas</span>
+    <span data-lang-inline="ua">Про нас</span>
+    <span data-lang-inline="en">About</span>
+  </a>
+  <a href="#oferta">
+    <span data-lang="pl" class="active">Oferta</span>
+    <span data-lang-inline="ua">Асортимент</span>
+    <span data-lang-inline="en">Products</span>
+  </a>
+  <a href="#sklepy">
+    <span data-lang="pl" class="active">Sklepy</span>
+    <span data-lang-inline="ua">Магазини</span>
+    <span data-lang-inline="en">Locations</span>
+  </a>
+  <a href="#kontakt">
+    <span data-lang="pl" class="active">Kontakt</span>
+    <span data-lang-inline="ua">Контакт</span>
+    <span data-lang-inline="en">Contact</span>
+  </a>
+</nav>
+
+<hr class="divider"/>
+
+<!-- O NAS -->
+<section id="onas">
+
+  <!-- POLISH -->
+  <div data-lang="pl" class="active">
+    <div class="section-label">— Kim jesteśmy</div>
+    <h2>Twój sklep od ćwierć wieku</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          TANI to nie supermarket, nie sieciówka, nie magazyn z logo. To sklep, który zna
+          swoich klientów z imienia. Dwa lokale w Rabce-Zdroju i Skawie, prowadzone przez
+          rodzinę Stolarczyków nieprzerwanie od <strong>1999 roku</strong>.
+        </p>
+        <p>
+          Właściciel — <strong>Władysław Stolarczyk</strong> — otworzył pierwszy sklep
+          kiedy Rabka jeszcze pamiętała inne czasy. Przez ponad 25 lat zbudował coś, czego
+          nie da się kupić za żadne pieniądze: zaufanie sąsiadów.
+        </p>
+        <p>
+          Znajdziesz tu wszystko: od marchewki po proszek do prania, od lokalnych
+          jajek po artykuły szkolne dla dzieci. A jeśli czegoś nie masz czasu
+          kupić osobiście — zaglądaj do nas na Allegro.
+        </p>
+        <div class="allegro-banner">
+          <div>
+            <p>Zamawiaj przez Allegro</p>
+            <span>Wysyłka do całej Polski</span>
+          </div>
+          <a href="https://allegro.pl/uzytkownik/Tanirabka/sklep" class="btn-allegro" target="_blank" rel="noopener">
+            🛒 Allegro
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="fact-card">
+          <strong>25+</strong>
+          <span>lat na rynku (od 1999)</span>
+        </div>
+        <div class="fact-card">
+          <strong>2</strong>
+          <span>sklepy w regionie</span>
+        </div>
+        <div class="fact-card">
+          <strong>1000+</strong>
+          <span>produktów w ofercie</span>
+        </div>
+        <div class="owner-box">
+          <span class="owner-name">Władysław Stolarczyk</span>
+          <p>„Przez te 25 lat nabrałem jednego przekonania: ludzie chcą kupować
+          od kogoś, komu ufają. Staramy się być tym kimś każdego dnia."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UKRAINIAN -->
+  <div data-lang="ua">
+    <div class="section-label">— Хто ми</div>
+    <h2>Ваш магазин вже чверть століття</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          TANI — це не супермаркет і не мережа. Це магазин, де знають покупців
+          на ім'я. Два магазини в Рабці-Здруй та Скаві, якими родина Столарчиків
+          керує безперервно з <strong>1999 року</strong>.
+        </p>
+        <p>
+          Власник — <strong>Владислав Столарчик</strong> — відкрив перший магазин
+          понад 25 років тому. За цей час він здобув найцінніше: довіру сусідів.
+        </p>
+        <p>
+          Тут є все: від свіжих овочів до пральних засобів, від місцевих яєць
+          до шкільного приладдя. А якщо не маєте часу зайти особисто —
+          купуйте у нас на Allegro.
+        </p>
+        <div class="allegro-banner">
+          <div>
+            <p>Замовляйте через Allegro</p>
+            <span>Доставка по всій Польщі</span>
+          </div>
+          <a href="https://allegro.pl/uzytkownik/Tanirabka/sklep" class="btn-allegro" target="_blank" rel="noopener">
+            🛒 Allegro
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="fact-card">
+          <strong>25+</strong>
+          <span>років на ринку (з 1999)</span>
+        </div>
+        <div class="fact-card">
+          <strong>2</strong>
+          <span>магазини в регіоні</span>
+        </div>
+        <div class="fact-card">
+          <strong>1000+</strong>
+          <span>товарів в асортименті</span>
+        </div>
+        <div class="owner-box">
+          <span class="owner-name">Владислав Столарчик</span>
+          <p>«За ці 25 років я переконався в одному: люди хочуть купувати
+          у того, кому довіряють. Ми намагаємося бути такими кожен день.»</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div data-lang="en">
+    <div class="section-label">— Who we are</div>
+    <h2>Your local store for over a quarter century</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          TANI is not a supermarket, not a chain, not a warehouse. It's a neighbourhood
+          store that knows its customers by name. Two locations in Rabka-Zdrój and Skawa,
+          run by the Stolarczyk family without interruption since <strong>1999</strong>.
+        </p>
+        <p>
+          The owner — <strong>Władysław Stolarczyk</strong> — opened the first shop over
+          25 years ago. Over time he built something money can't buy: the trust of his
+          neighbours.
+        </p>
+        <p>
+          You'll find everything here: from fresh vegetables to laundry detergent, from
+          local eggs to school supplies. And if you can't visit in person, find us on
+          Allegro — Poland's largest marketplace.
+        </p>
+        <div class="allegro-banner">
+          <div>
+            <p>Order via Allegro</p>
+            <span>Delivery across Poland</span>
+          </div>
+          <a href="https://allegro.pl/uzytkownik/Tanirabka/sklep" class="btn-allegro" target="_blank" rel="noopener">
+            🛒 Allegro
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="fact-card">
+          <strong>25+</strong>
+          <span>years in business (since 1999)</span>
+        </div>
+        <div class="fact-card">
+          <strong>2</strong>
+          <span>shops in the region</span>
+        </div>
+        <div class="fact-card">
+          <strong>1000+</strong>
+          <span>products available</span>
+        </div>
+        <div class="owner-box">
+          <span class="owner-name">Władysław Stolarczyk</span>
+          <p>"After 25 years, I believe one thing: people want to buy from someone
+          they trust. We try to be that person, every single day."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider"/>
+
+<!-- OFERTA -->
+<div id="oferta">
+  <div class="inner">
+    <div data-lang="pl" class="active">
+      <div class="section-label">— Co oferujemy</div>
+      <h2>Nasze produkty</h2>
+    </div>
+    <div data-lang="ua">
+      <div class="section-label">— Що ми пропонуємо</div>
+      <h2>Наші продукти</h2>
+    </div>
+    <div data-lang="en">
+      <div class="section-label">— What we offer</div>
+      <h2>Our products</h2>
+    </div>
+
+    <div class="cat-grid">
+      <div class="cat-item">
+        <span class="cat-icon">🥬</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Warzywa<br/>i owoce</span>
+          <span data-lang="ua">Овочі<br/>та фрукти</span>
+          <span data-lang="en">Vegetables<br/>& fruit</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🥛</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Nabiał<br/>i jaja</span>
+          <span data-lang="ua">Молочні<br/>продукти</span>
+          <span data-lang="en">Dairy<br/>& eggs</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🍞</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Pieczywo<br/>i ciasta</span>
+          <span data-lang="ua">Хліб<br/>і випічка</span>
+          <span data-lang="en">Bread<br/>& pastry</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🧴</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Chemia<br/>domowa</span>
+          <span data-lang="ua">Побутова<br/>хімія</span>
+          <span data-lang="en">Household<br/>chemicals</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🧃</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Napoje<br/>i przekąski</span>
+          <span data-lang="ua">Напої<br/>і снеки</span>
+          <span data-lang="en">Drinks<br/>& snacks</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🏫</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Artykuły<br/>szkolne</span>
+          <span data-lang="ua">Шкільне<br/>приладдя</span>
+          <span data-lang="en">School<br/>supplies</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🧹</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Sprzęt<br/>porządkowy</span>
+          <span data-lang="ua">Засоби<br/>для прибирання</span>
+          <span data-lang="en">Cleaning<br/>tools</span>
+        </div>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">🐾</span>
+        <div class="cat-name">
+          <span data-lang="pl" class="active">Karma<br/>dla zwierząt</span>
+          <span data-lang="ua">Корм<br/>для тварин</span>
+          <span data-lang="en">Pet<br/>food</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SKLEPY -->
+<section id="sklepy">
+  <div data-lang="pl" class="active">
+    <div class="section-label">— Gdzie nas znajdziesz</div>
+    <h2>Dwa sklepy, jedna rodzina</h2>
+  </div>
+  <div data-lang="ua">
+    <div class="section-label">— Де нас знайти</div>
+    <h2>Два магазини, одна родина</h2>
+  </div>
+  <div data-lang="en">
+    <div class="section-label">— Find us</div>
+    <h2>Two shops, one family</h2>
+  </div>
+
+  <div class="shops-grid">
+    <!-- SKLEP 1 -->
+    <div class="shop-card">
+      <div class="shop-header">
+        <div class="shop-num">1</div>
+        <div class="shop-title">
+          TANI<br/>
+          <span data-lang="pl" class="active">Rabka-Zdrój</span>
+          <span data-lang-inline="ua">Рабка-Здруй</span>
+          <span data-lang-inline="en">Rabka-Zdrój</span>
+        </div>
+      </div>
+      <div class="shop-body">
+        <p><span class="icon">📍</span> ul. Zakopiańska 4, 34-700 Rabka-Zdrój</p>
+        <p><span class="icon">🕐</span>
+          <span data-lang="pl" class="active">Pon–Sob: 7:00–20:00 / Nd: 8:00–18:00</span>
+          <span data-lang-inline="ua">Пн–Сб: 7:00–20:00 / Нд: 8:00–18:00</span>
+          <span data-lang-inline="en">Mon–Sat: 7:00–20:00 / Sun: 8:00–18:00</span>
+        </p>
+        <p><span class="icon">🚌</span>
+          <span data-lang="pl" class="active">Przystanek autobusowy 50 m</span>
+          <span data-lang-inline="ua">Зупинка автобуса 50 м</span>
+          <span data-lang-inline="en">Bus stop 50 m away</span>
+        </p>
+        <a href="https://maps.google.com/?q=ul.+Zakopian%CC%81ska+4,+34-700+Rabka-Zdro%CC%81j" target="_blank" rel="noopener" class="map-link">
+          📍
+          <span data-lang="pl" class="active">Otwórz w Mapach</span>
+          <span data-lang-inline="ua">Відкрити на карті</span>
+          <span data-lang-inline="en">Open in Maps</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- SKLEP 2 -->
+    <div class="shop-card">
+      <div class="shop-header">
+        <div class="shop-num">2</div>
+        <div class="shop-title">
+          TANI<br/>
+          <span data-lang="pl" class="active">Skawa</span>
+          <span data-lang-inline="ua">Скава</span>
+          <span data-lang-inline="en">Skawa</span>
+        </div>
+      </div>
+      <div class="shop-body">
+        <p><span class="icon">📍</span> Skawa 573</p>
+        <p><span class="icon">🕐</span>
+          <span data-lang="pl" class="active">Pon–Sob: 7:00–19:00 / Nd: 8:00–15:00</span>
+          <span data-lang-inline="ua">Пн–Сб: 7:00–19:00 / Нд: 8:00–15:00</span>
+          <span data-lang-inline="en">Mon–Sat: 7:00–19:00 / Sun: 8:00–15:00</span>
+        </p>
+        <p><span class="icon">🌿</span>
+          <span data-lang="pl" class="active">Spokojny zakątek w Skawie</span>
+          <span data-lang-inline="ua">Затишне місце в Скаві</span>
+          <span data-lang-inline="en">Quiet spot in the village of Skawa</span>
+        </p>
+        <a href="https://maps.google.com/?q=Skawa+573" target="_blank" rel="noopener" class="map-link">
+          📍
+          <span data-lang="pl" class="active">Otwórz w Mapach</span>
+          <span data-lang-inline="ua">Відкрити на карті</span>
+          <span data-lang-inline="en">Open in Maps</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAPA GOOGLE -->
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.0!2d19.9640!3d49.6170!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sZakopi%C5%84ska+4%2C+34-700+Rabka-Zdr%C3%B3j!5e0!3m2!1spl!2spl!4v1700000000000"
+      loading="lazy"
+      allowfullscreen=""
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Lokalizacja sklepów TANI">
+    </iframe>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div data-lang="pl" class="active">
+    <div class="section-label">— Napisz do nas</div>
+    <h2>Kontakt</h2>
+  </div>
+  <div data-lang="ua">
+    <div class="section-label">— Напишіть нам</div>
+    <h2>Контакт</h2>
+  </div>
+  <div data-lang="en">
+    <div class="section-label">— Get in touch</div>
+    <h2>Contact us</h2>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>
+        <span data-lang="pl" class="active">Informacje</span>
+        <span data-lang-inline="ua">Інформація</span>
+        <span data-lang-inline="en">Information</span>
+      </h3>
+      <p>
+        <span>📞</span>
+        <span><a href="tel:+48668157991" style="color:inherit;text-decoration:none">668 157 991</a></span>
+      </p>
+      <p>
+        <span>📧</span>
+        <span><a href="mailto:tanirabka@wp.eu" style="color:inherit;text-decoration:none">tanirabka@wp.eu</a></span>
+      </p>
+      <p>
+        <span>📍</span>
+        <span>ul. Zakopiańska 4, Rabka-Zdrój<br/>Skawa 573</span>
+      </p>
+      <br/>
+      <p>
+        <span>🛒</span>
+        <a class="allegro-badge" href="https://allegro.pl/uzytkownik/Tanirabka/sklep" target="_blank" rel="noopener">
+          Znajdź nas na Allegro
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <form id="contactForm" novalidate onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">
+            <span data-lang="pl" class="active">Imię i nazwisko</span>
+            <span data-lang-inline="ua">Ім'я та прізвище</span>
+            <span data-lang-inline="en">Full name</span>
+          </label>
+          <input type="text" id="name" name="name" required autocomplete="name"
+            placeholder="Jan Kowalski"/>
+        </div>
+        <div class="form-group">
+          <label for="email">
+            <span data-lang="pl" class="active">Adres e-mail</span>
+            <span data-lang-inline="ua">Електронна пошта</span>
+            <span data-lang-inline="en">Email address</span>
+          </label>
+          <input type="email" id="email" name="email" required autocomplete="email"
+            placeholder="jan@example.com"/>
+        </div>
+        <div class="form-group">
+          <label for="message">
+            <span data-lang="pl" class="active">Wiadomość</span>
+            <span data-lang-inline="ua">Повідомлення</span>
+            <span data-lang-inline="en">Message</span>
+          </label>
+          <textarea id="message" name="message" required
+            placeholder="Napisz do nas..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span data-lang="pl" class="active">Wyślij wiadomość →</span>
+          <span data-lang-inline="ua">Надіслати →</span>
+          <span data-lang-inline="en">Send message →</span>
+        </button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <p>✅
+          <span data-lang="pl" class="active">Dziękujemy! Odezwiemy się wkrótce.</span>
+          <span data-lang-inline="ua">Дякуємо! Ми зв'яжемося незабаром.</span>
+          <span data-lang-inline="en">Thank you! We'll be in touch shortly.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">TANI</div>
+      <p class="footer-copy">
+        © 1999–2025 FHU TANI Stolarczyk Władysław, Ewa Jąkała s.c.<br/>
+        <span data-lang="pl" class="active">Sklepy Osiedlowe TANI · Rabka-Zdrój.</span>
+        <span data-lang-inline="ua">Сусідські магазини TANI · Рабка-Здруй.</span>
+        <span data-lang-inline="en">TANI Neighbourhood Stores · Rabka-Zdrój, Poland.</span>
+      </p>
+    </div>
+    <div>
+      <h4>
+        <span data-lang="pl" class="active">Nawigacja</span>
+        <span data-lang-inline="ua">Навігація</span>
+        <span data-lang-inline="en">Navigation</span>
+      </h4>
+      <a href="#onas">
+        <span data-lang="pl" class="active">O nas</span>
+        <span data-lang-inline="ua">Про нас</span>
+        <span data-lang-inline="en">About</span>
+      </a>
+      <a href="#oferta">
+        <span data-lang="pl" class="active">Oferta</span>
+        <span data-lang-inline="ua">Асортимент</span>
+        <span data-lang-inline="en">Products</span>
+      </a>
+      <a href="#sklepy">
+        <span data-lang="pl" class="active">Sklepy</span>
+        <span data-lang-inline="ua">Магазини</span>
+        <span data-lang-inline="en">Locations</span>
+      </a>
+      <a href="#kontakt">
+        <span data-lang="pl" class="active">Kontakt</span>
+        <span data-lang-inline="ua">Контакт</span>
+        <span data-lang-inline="en">Contact</span>
+      </a>
+    </div>
+    <div>
+      <h4>
+        <span data-lang="pl" class="active">Sklepy</span>
+        <span data-lang-inline="ua">Магазини</span>
+        <span data-lang-inline="en">Locations</span>
+      </h4>
+      <p>ul. Zakopiańska 4<br/>34-700 Rabka-Zdrój</p>
+      <p style="margin-top:8px">Skawa 573</p>
+      <a href="https://allegro.pl/uzytkownik/Tanirabka/sklep" target="_blank" rel="noopener" style="margin-top:12px; color:#FF9944;">
+        🛒 Allegro
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// === LANGUAGE SWITCHER ===
+let currentLang = 'pl';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  // Block elements
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+
+  // Inline elements
+  document.querySelectorAll('[data-lang-inline]').forEach(el => {
+    el.classList.toggle('active', el.dataset.langInline === lang);
+  });
+
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const map = { pl: 0, ua: 1, en: 2 };
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+
+  // Update html lang attr
+  document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+}
+
+// === CONTACT FORM (frontend only — needs backend in Etap 2) ===
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+
+  // Basic validation
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
+
+  if (!name || !email || !message) {
+    alert(
+      currentLang === 'pl' ? 'Proszę wypełnić wszystkie pola.' :
+      currentLang === 'ua' ? 'Будь ласка, заповніть усі поля.' :
+      'Please fill in all fields.'
+    );
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert(
+      currentLang === 'pl' ? 'Nieprawidłowy adres e-mail.' :
+      currentLang === 'ua' ? 'Некоректна адреса електронної пошти.' :
+      'Invalid email address.'
+    );
+    return;
+  }
+
+  // Simulate send (replace with actual backend endpoint in Etap 2)
+  form.style.display = 'none';
+  success.style.display = 'block';
+  // Update success message lang
+  setLang(currentLang);
+}
+
+// Init on load
+setLang('pl');
+</script>
+</body>
+</html>
