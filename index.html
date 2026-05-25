@@ -1225,7 +1225,6 @@ footer a:hover { color: var(--yellow); }
 }
 .btn-dodaj:hover { background: var(--yellow); color: var(--black); }
 .btn-dodaj.dodano { background: green; color: #fff; border-color: green; }
-
 /* === TRANSLATIONS === */
 [data-lang] { display: none; }
 [data-lang].active { display: block; }
@@ -1377,7 +1376,7 @@ footer a:hover { color: var(--yellow); }
         <p>
           TANI — це не супермаркет і не мережа. Це магазин, де знають покупців
           на ім'я. Два магазини в Рабці-Здруй та Скаві, якими родина Столарчиків
-          керує безперервно з <strong>1999 року</strong>.
+          керує безперервно з <strong>1999 roku</strong>.
         </p>
         <p>
           Власник — <strong>Владислав Столарчик</strong> — відкрив перший магазин
@@ -1413,7 +1412,7 @@ footer a:hover { color: var(--yellow); }
         </div>
         <div class="owner-box">
           <span class="owner-name">Владислав Столарчик</span>
-          <p>«За ці 25 років я переконався в одному: люди хочуть купувати
+          <p>«За ці 25 років я переконався в одномy: люди хочуть купувати
           у того, кому довіряють. Ми намагаємося бути такими кожен день.»</p>
         </div>
       </div>
@@ -1478,7 +1477,7 @@ footer a:hover { color: var(--yellow); }
 <hr class="divider"/>
 
 <!-- OFERTA -->
-<div id="oferta">
+<section id="oferta">
   <div class="inner">
     <div data-lang="pl" class="active">
       <div class="section-label">— Co oferujemy</div>
@@ -1499,11 +1498,45 @@ footer a:hover { color: var(--yellow); }
       </p>
     </div>
   </div>
-</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <hr class="divider"/>
 
-<!-- SKLEPY -->
 <section id="sklepy">
   <div data-lang="pl" class="active">
     <div class="section-label">— Gdzie nas znajdziesz</div>
@@ -1519,7 +1552,6 @@ footer a:hover { color: var(--yellow); }
   </div>
 
   <div class="shops-grid">
-    <!-- SKLEP 1 -->
     <div class="shop-card">
       <div class="shop-header">
         <div class="shop-num">1</div>
@@ -1551,7 +1583,6 @@ footer a:hover { color: var(--yellow); }
       </div>
     </div>
 
-    <!-- SKLEP 2 -->
     <div class="shop-card">
       <div class="shop-header">
         <div class="shop-num">2</div>
@@ -1584,7 +1615,6 @@ footer a:hover { color: var(--yellow); }
     </div>
   </div>
 
-  <!-- MAPA GOOGLE -->
   <div class="map-container">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.0!2d19.9640!3d49.6170!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sZakopi%C5%84ska+4%2C+34-700+Rabka-Zdr%C3%B3j!5e0!3m2!1spl!2spl!4v1700000000000"
@@ -1592,13 +1622,12 @@ footer a:hover { color: var(--yellow); }
       allowfullscreen=""
       referrerpolicy="no-referrer-when-downgrade"
       title="Lokalizacja sklepów TANI">
-    </iframe>
+     Bryan </iframe>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- KONTAKT -->
 <section id="kontakt">
   <div data-lang="pl" class="active">
     <div class="section-label">— Napisz do nas</div>
@@ -1649,8 +1678,7 @@ footer a:hover { color: var(--yellow); }
             <span data-lang-inline="ua">Ім'я та прізвище</span>
             <span data-lang-inline="en">Full name</span>
           </label>
-          <input type="text" id="name" name="name" required autocomplete="name"
-            placeholder="Jan Kowalski"/>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jan Kowalski"/>
         </div>
         <div class="form-group">
           <label for="email">
@@ -1658,8 +1686,7 @@ footer a:hover { color: var(--yellow); }
             <span data-lang-inline="ua">Електронна пошта</span>
             <span data-lang-inline="en">Email address</span>
           </label>
-          <input type="email" id="email" name="email" required autocomplete="email"
-            placeholder="jan@example.com"/>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@example.com"/>
         </div>
         <div class="form-group">
           <label for="message">
@@ -1667,8 +1694,7 @@ footer a:hover { color: var(--yellow); }
             <span data-lang-inline="ua">Повідомлення</span>
             <span data-lang-inline="en">Message</span>
           </label>
-          <textarea id="message" name="message" required
-            placeholder="Napisz do nas..."></textarea>
+          <textarea id="message" name="message" required placeholder="Napisz do nas..."></textarea>
         </div>
         <button type="submit" class="submit-btn">
           <span data-lang="pl" class="active">Wyślij wiadomość →</span>
@@ -1676,7 +1702,7 @@ footer a:hover { color: var(--yellow); }
           <span data-lang-inline="en">Send message →</span>
         </button>
       </form>
-      <div class="form-success" id="formSuccess">
+      <div class="form-success" id="formSuccess" style="display:none;">
         <p>✅
           <span data-lang="pl" class="active">Dziękujemy! Odezwiemy się wkrótce.</span>
           <span data-lang-inline="ua">Дякуємо! Ми зв'яжемося незабаром.</span>
@@ -1689,13 +1715,12 @@ footer a:hover { color: var(--yellow); }
 
 <hr class="divider"/>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
       <div class="footer-logo">TANI</div>
       <p class="footer-copy">
-        © 1999–2025 FHU TANI Stolarczyk Władysław, Ewa Jąkała s.c.<br/>
+        © 1999–2026 FHU TANI Stolarczyk Władysław, Ewa Jąkała s.c.<br/>
         <span data-lang="pl" class="active">Sklepy Osiedlowe TANI · Rabka-Zdrój.</span>
         <span data-lang-inline="ua">Сусідські магазини TANI · Рабка-Здруй.</span>
         <span data-lang-inline="en">TANI Neighbourhood Stores · Rabka-Zdrój, Poland.</span>
@@ -1743,172 +1768,7 @@ footer a:hover { color: var(--yellow); }
   </div>
 </footer>
 
-<script>
-// === LANGUAGE SWITCHER ===
-let currentLang = 'pl';
-
-function setLang(lang) {
-  currentLang = lang;
-
-  // Block elements
-  document.querySelectorAll('[data-lang]').forEach(el => {
-    el.classList.toggle('active', el.dataset.lang === lang);
-  });
-
-  // Inline elements
-  document.querySelectorAll('[data-lang-inline]').forEach(el => {
-    el.classList.toggle('active', el.dataset.langInline === lang);
-  });
-
-  // Update buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    const map = { pl: 0, ua: 1, en: 2 };
-    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
-  });
-
-  // Update html lang attr
-  document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
-}
-
-// === CONTACT FORM (frontend only — needs backend in Etap 2) ===
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-
-  // Basic validation
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
-
-  if (!name || !email || !message) {
-    alert(
-      currentLang === 'pl' ? 'Proszę wypełnić wszystkie pola.' :
-      currentLang === 'ua' ? 'Будь ласка, заповніть усі поля.' :
-      'Please fill in all fields.'
-    );
-    return;
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert(
-      currentLang === 'pl' ? 'Nieprawidłowy adres e-mail.' :
-      currentLang === 'ua' ? 'Некоректна адреса електронної пошти.' :
-      'Invalid email address.'
-    );
-    return;
-  }
-
-  // Simulate send (replace with actual backend endpoint in Etap 2)
-  form.style.display = 'none';
-  success.style.display = 'block';
-  // Update success message lang
-  setLang(currentLang);
-}
-
-// Init on load
-setLang('pl');
-</script>
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPABASE_URL = 'https://jqarrtdzdpnvcwgvbvlr.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_Wbd9Jt7DGhdA1jxpYzZEXg_mo0DRJ82';
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const ETYKIETY_KATEGORII = {
-  'warzywa':   { pl: '🥬 Warzywa i owoce',       ua: '🥬 Овочі та фрукти',        en: '🥬 Vegetables & fruit' },
-  'nabiał':    { pl: '🥛 Nabiał i jaja',          ua: '🥛 Молочні продукти',        en: '🥛 Dairy & eggs' },
-  'pieczywo':  { pl: '🍞 Pieczywo',               ua: '🍞 Хліб і випічка',          en: '🍞 Bread & pastry' },
-  'chemia':    { pl: '🧴 Chemia domowa',           ua: '🧴 Побутова хімія',          en: '🧴 Household chemicals' },
-  'napoje':    { pl: '🧃 Napoje i przekąski',      ua: '🧃 Напої і снеки',           en: '🧃 Drinks & snacks' },
-  'szkolne':   { pl: '🏫 Artykuły szkolne',        ua: '🏫 Шкільне приладдя',        en: '🏫 School supplies' },
-  'porządki':  { pl: '🧹 Sprzęt porządkowy',       ua: '🧹 Засоби для прибирання',   en: '🧹 Cleaning tools' },
-  'zwierzęta': { pl: '🐾 Karma dla zwierząt',      ua: '🐾 Корм для тварин',         en: '🐾 Pet food' },
-};
-
-function etykietaKat(kat, lang) {
-  const k = (kat || '').toLowerCase().trim();
-  if (ETYKIETY_KATEGORII[k]) return ETYKIETY_KATEGORII[k][lang] || kat;
-  return kat;
-}
-
-async function ladujProdukty() {
-  const lang = window.currentLang || 'pl';
-  const kontener = document.getElementById('produkty-container');
-
-  const { data: produkty, error } = await db
-    .from('produkty')
-    .select('*')
-    .eq('dostepny', true)
-    .order('kategoria')
-    .order('nazwa');
-
-  if (error) {
-    kontener.innerHTML = '<p class="brak-produktow">Nie udało się załadować produktów.</p>';
-    console.error(error);
-    return;
-  }
-
-  if (!produkty || produkty.length === 0) {
-    const komunikat = {
-      pl: 'Brak produktów — zajrzyj wkrótce!',
-      ua: 'Немає товарів — заходьте незабаром!',
-      en: 'No products yet — check back soon!'
-    };
-    kontener.innerHTML = `<p class="brak-produktow">${komunikat[lang]}</p>`;
-    return;
-  }
-
-  // Grupuj po kategoriach
-  const kategorie = {};
-  produkty.forEach(p => {
-    const k = (p.kategoria || 'inne').toLowerCase().trim();
-    if (!kategorie[k]) kategorie[k] = [];
-    kategorie[k].push(p);
-  });
-
-  let html = '';
-  for (const [kat, items] of Object.entries(kategorie)) {
-    html += `<div class="kat-sekcja">
-      <h3 class="kat-tytul">${etykietaKat(kat, lang)}</h3>
-      <div class="produkty-grid">`;
-
-    items.forEach(p => {
-      const maP = p.cena_przed_przecena && Number(p.cena_przed_przecena) > Number(p.cena);
-      const stara = maP ? `<span class="stara-cena">${Number(p.cena_przed_przecena).toFixed(2)} zł</span>` : '';
-      const badge = maP ? `<div class="przecena-badge">PROMOCJA</div>` : '';
-      const opis = p.opis ? `<div class="produkt-opis">${p.opis}</div>` : '';
-
-      html += `
-        <div class="produkt-karta${maP ? ' przecena' : ''}">
-          ${badge}
-          <div class="produkt-nazwa">${p.nazwa}</div>
-          ${opis}
-          <div class="produkt-cena">
-            ${stara}
-            <span class="nowa-cena">${Number(p.cena).toFixed(2)} zł</span>
-          </div>
-        </div>`;
-    });
-
-    html += `</div></div>`;
-  }
-
-  kontener.innerHTML = html;
-}
-
-// Załaduj produkty po załadowaniu strony
-document.addEventListener('DOMContentLoaded', ladujProdukty);
-
-// Przeładuj przy zmianie języka
-const _origSetLang = window.setLang;
-</script>
-
-<!-- OVERLAY -->
 <div class="koszyk-overlay" id="koszykOverlay" onclick="zamknijKoszyk()"></div>
-
-<!-- PANEL KOSZYK -->
 <div class="koszyk-panel" id="koszykPanel" role="dialog" aria-label="Koszyk">
   <div class="koszyk-naglowek">
     <h3>🛒 Koszyk</h3>
@@ -1924,7 +1784,6 @@ const _origSetLang = window.setLang;
   </div>
 </div>
 
-<!-- PANEL UŻYTKOWNIK -->
 <div class="koszyk-overlay" id="userOverlay" onclick="zamknijUserPanel()"></div>
 <div class="user-panel" id="userPanel" role="dialog">
   <div class="user-panel-naglowek">
@@ -1938,7 +1797,6 @@ const _origSetLang = window.setLang;
   </div>
 </div>
 
-<!-- MODAL AUTH -->
 <div class="modal-overlay" id="authModal" role="dialog" aria-modal="true">
   <div class="modal">
     <div class="modal-naglowek">
@@ -1971,7 +1829,6 @@ const _origSetLang = window.setLang;
   </div>
 </div>
 
-<!-- MODAL ZAMÓWIENIE -->
 <div class="modal-overlay" id="zamowModal" role="dialog" aria-modal="true">
   <div class="modal" style="max-width:520px;">
     <div class="modal-naglowek">
@@ -2043,9 +1900,10 @@ let zalogowanyUzytkownik = null;
 let aktywnyTab = 'login';
 window.currentLang = 'pl';
 
-// === JĘZYK ===
+// === SYSTEM JĘZYKOWY (Zintegrowany z przeładowaniem bazy) ===
 function setLang(lang) {
   window.currentLang = lang;
+  
   document.querySelectorAll('[data-lang]').forEach(el => {
     el.classList.toggle('active', el.dataset.lang === lang);
   });
@@ -2056,9 +1914,14 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
   });
   document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+
+  // Ponowne renderowanie produktów z bazy, aby przetłumaczyć nagłówki kategorii
+  if (typeof ladujProdukty === 'function') {
+    ladujProdukty();
+  }
 }
 
-// === PRODUKTY ===
+// === PRODUKTY Z SUPABASE ===
 const ETYKIETY_KATEGORII = {
   'warzywa':   { pl: '🥬 Warzywa i owoce', ua: '🥬 Овочі та фрукти', en: '🥬 Vegetables & fruit' },
   'nabiał':    { pl: '🥛 Nabiał i jaja', ua: '🥛 Молочні продукти', en: '🥛 Dairy & eggs' },
@@ -2077,18 +1940,33 @@ function etykietaKat(kat, lang) {
 async function ladujProdukty() {
   const lang = window.currentLang || 'pl';
   const kontener = document.getElementById('produkty-container');
+  if (!kontener) return; // Zabezpieczenie przed błędami wywołania
+
   const { data: produkty, error } = await db.from('produkty').select('*')
     .eq('dostepny', true).order('kategoria').order('nazwa');
-  if (error || !produkty?.length) {
-    kontener.innerHTML = `<p class="brak-produktow">${error ? 'Błąd ładowania.' : 'Brak produktów — zajrzyj wkrótce!'}</p>`;
+
+  if (error) {
+    kontener.innerHTML = `<p class="brak-produktow">Błąd ładowania produktów z bazy danych.</p>`;
+    console.error(error);
     return;
   }
+  if (!produkty || produkty.length === 0) {
+    const komunikat = {
+      pl: 'Brak produktów — zajrzyj wkrótce!',
+      ua: 'Немає товарів — заходьте незабаром!',
+      en: 'No products yet — check back soon!'
+    };
+    kontener.innerHTML = `<p class="brak-produktow">${komunikat[lang]}</p>`;
+    return;
+  }
+
   const kategorie = {};
   produkty.forEach(p => {
     const k = (p.kategoria || 'inne').toLowerCase().trim();
     if (!kategorie[k]) kategorie[k] = [];
     kategorie[k].push(p);
   });
+
   let html = '';
   for (const [kat, items] of Object.entries(kategorie)) {
     html += `<div class="kat-sekcja"><h3 class="kat-tytul">${etykietaKat(kat, lang)}</h3><div class="produkty-grid">`;
@@ -2108,7 +1986,7 @@ async function ladujProdukty() {
   kontener.innerHTML = html;
 }
 
-// === KOSZYK ===
+// === OBSŁUGA KOSZYKA ===
 function zapiszKoszyk() { localStorage.setItem('tani_koszyk', JSON.stringify(koszyk)); }
 
 function dodajDoKoszyka(id, nazwa, cena) {
@@ -2134,14 +2012,17 @@ function zmienIlosc(id, delta) {
 function aktualizujLicznik() {
   const n = koszyk.reduce((s, x) => s + x.qty, 0);
   const el = document.getElementById('koszykLicznik');
-  el.textContent = n;
-  el.classList.toggle('widoczny', n > 0);
+  if (el) {
+    el.textContent = n;
+    el.classList.toggle('widoczny', n > 0);
+  }
   const btnZ = document.getElementById('btnZamow');
   if (btnZ) btnZ.disabled = n === 0;
 }
 
 function renderKoszyk() {
   const lista = document.getElementById('koszykLista');
+  if (!lista) return;
   const suma = koszyk.reduce((s, x) => s + x.cena * x.qty, 0);
   document.getElementById('koszykSuma').textContent = suma.toFixed(2) + ' zł';
   if (!koszyk.length) { lista.innerHTML = '<div class="koszyk-pusty">🛒 Koszyk jest pusty</div>'; return; }
@@ -2156,6 +2037,36 @@ function renderKoszyk() {
       <div class="koszyk-poz-cena">${(p.cena*p.qty).toFixed(2)} zł</div>
     </div>`).join('');
 }
+
+// === FORMULARZ KONTAKTOWY ===
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
+
+  if (!name || !email || !message) {
+    alert(window.currentLang === 'pl' ? 'Proszę wypełnić wszystkie pola.' : window.currentLang === 'ua' ? 'Будь ласка, заповніть усі поля.' : 'Please fill in all fields.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert(window.currentLang === 'pl' ? 'Nieprawidłowy adres e-mail.' : window.currentLang === 'ua' ? 'Некоректна адреса електронної пошти.' : 'Invalid email address.');
+    return;
+  }
+
+  form.style.display = 'none';
+  success.style.display = 'block';
+  setLang(window.currentLang);
+}
+
+// Inicjalizacja komponentów po załadowaniu drzewa DOM
+document.addEventListener('DOMContentLoaded', () => {
+  setLang('pl');
+  aktualizujLicznik();
+});
 
 function otworzKoszyk() {
   document.getElementById('koszykPanel').classList.add('otwarty');
@@ -2187,7 +2098,10 @@ async function handleAuth(e) {
   const haslo = document.getElementById('authHaslo').value;
   const err = document.getElementById('authError');
   const suk = document.getElementById('authSukces');
-  err.classList.remove('widoczny'); suk.classList.remove('widoczny');
+  
+  if (err) err.classList.remove('widoczny'); 
+  if (suk) suk.classList.remove('widoczny');
+  
   if (aktywnyTab === 'register') {
     const haslo2 = document.getElementById('authHaslo2').value;
     if (haslo !== haslo2) { err.textContent = 'Hasła nie są identyczne.'; err.classList.add('widoczny'); return; }
@@ -2217,9 +2131,25 @@ function zamknijUserPanel() {
 
 async function ladujZamowienia() {
   const lista = document.getElementById('zamowieniaLista');
+  if (!lista) return;
   lista.innerHTML = '<p style="font-size:13px;color:#888;">Ładowanie...</p>';
-  const { data, error } = await db.from('zamowienia').select('*').order('created_at', { ascending: false });
-  if (error || !data?.length) { lista.innerHTML = '<p style="font-size:13px;color:#888;font-family:\'Special Elite\',monospace;">Brak zamówień.</p>'; return; }
+  
+  // Zabezpieczenie RLS: Pobieramy tylko zamówienia aktualnie zalogowanego użytkownika
+  if (!zalogowanyUzytkownik) {
+    lista.innerHTML = '<p style="font-size:13px;color:#888;">Musisz być zalogowany.</p>';
+    return;
+  }
+
+  const { data, error } = await db.from('zamowienia')
+    .select('*')
+    .eq('user_id', zalogowanyUzytkownik.id)
+    .order('created_at', { ascending: false });
+    
+  if (error || !data?.length) { 
+    lista.innerHTML = '<p style="font-size:13px;color:#888;font-family:\'Special Elite\',monospace;">Brak zamówień.</p>'; 
+    return; 
+  }
+  
   lista.innerHTML = data.map(z => {
     const poz = z.produkty || [];
     const dt = new Date(z.created_at).toLocaleDateString('pl-PL');
@@ -2246,6 +2176,7 @@ function otworzZamowienie() {
   document.getElementById('zamowError').classList.remove('widoczny');
   document.getElementById('zamowSukces').classList.remove('widoczny');
   document.getElementById('zamowForm').style.display = 'flex';
+  
   document.querySelectorAll('input[name="odbior"]').forEach(r => {
     r.addEventListener('change', () => {
       document.getElementById('adresGroup').style.display = r.value==='dostawa'?'flex':'none';
@@ -2259,13 +2190,16 @@ async function zlozZamowienie(e) {
   const btn = document.getElementById('zamowSubmitBtn');
   const err = document.getElementById('zamowError');
   const suk = document.getElementById('zamowSukces');
-  err.classList.remove('widoczny');
+  if (err) err.classList.remove('widoczny');
+  
   const odbior = document.querySelector('input[name="odbior"]:checked')?.value;
   if (!odbior) { err.textContent = 'Wybierz sposób odbioru.'; err.classList.add('widoczny'); return; }
   const adres = document.getElementById('zamAdres').value.trim();
   if (odbior==='dostawa' && !adres) { err.textContent = 'Podaj adres dostawy.'; err.classList.add('widoczny'); return; }
+  
   btn.disabled = true; btn.textContent = '⏳ Wysyłam...';
   const suma = koszyk.reduce((s,x)=>s+x.cena*x.qty,0);
+  
   const { error } = await db.from('zamowienia').insert({
     user_id: zalogowanyUzytkownik.id,
     imie_nazwisko: document.getElementById('zamImie').value.trim(),
@@ -2275,8 +2209,11 @@ async function zlozZamowienie(e) {
     sklep: odbior!=='dostawa'?(odbior==='rabka'?'Rabka-Zdrój':'Skawa'):null,
     adres: odbior==='dostawa'?adres:null,
     uwagi: document.getElementById('zamUwagi').value.trim(),
-    produkty: koszyk, suma, status: 'nowe'
+    produkty: koszyk, 
+    suma: suma, 
+    status: 'nowe'
   });
+  
   if (error) {
     err.textContent = 'Błąd zapisu. Spróbuj ponownie.'; err.classList.add('widoczny');
     btn.disabled = false; btn.textContent = 'Złóż zamówienie →'; return;
@@ -2287,44 +2224,57 @@ async function zlozZamowienie(e) {
   koszyk = []; zapiszKoszyk(); aktualizujLicznik();
 }
 
-// === FORMULARZ KONTAKTOWY ===
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-  const lang = window.currentLang;
-  if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
-    alert(lang==='pl'?'Proszę wypełnić wszystkie pola.':lang==='ua'?'Заповніть усі поля.':'Please fill in all fields.'); return;
-  }
-  form.style.display = 'none'; success.style.display = 'block'; setLang(lang);
-}
-
 // === INIT ===
 document.addEventListener('DOMContentLoaded', async () => {
-  setLang('pl');
+  // Inicializacja stanu koszyka i produktów
   aktualizujLicznik();
   ladujProdukty();
-  const { data: { session } } = await db.auth.getSession();
-  if (session?.user) ustawZalogowanego(session.user);
+  
+  // Pobranie aktywnej sesji przy starcie strony
+  const { data: { session }, error } = await db.auth.getSession();
+  if (!error && session?.user) {
+    ustawZalogowanego(session.user);
+  } else {
+    ustawWylogowanego();
+  }
+  
+  // Nasłuchiwanie zmian stanu (zalogowanie/wylogowanie/potwierdzenie linku mailowego)
   db.auth.onAuthStateChange((_e, session) => {
-    if (session?.user) ustawZalogowanego(session.user);
-    else ustawWylogowanego();
+    if (session?.user) {
+      ustawZalogowanego(session.user);
+    } else {
+      ustawWylogowanego();
+    }
   });
 });
 
 function ustawZalogowanego(user) {
   zalogowanyUzytkownik = user;
   const btn = document.getElementById('authNavBtn');
-  btn.onclick = otworzUserPanel;
-  btn.textContent = '👤 ' + user.email.split('@')[0];
-  document.getElementById('userEmail').textContent = user.email;
+  if (btn) {
+    btn.onclick = otworzUserPanel;
+    btn.textContent = '👤 ' + user.email.split('@')[0];
+  }
+  const uEmail = document.getElementById('userEmail');
+  if (uEmail) uEmail.textContent = user.email;
 }
+
 function ustawWylogowanego() {
   zalogowanyUzytkownik = null;
   const btn = document.getElementById('authNavBtn');
-  btn.onclick = otworzAuth;
-  btn.textContent = 'Zaloguj się';
+  if (btn) {
+    btn.onclick = otworzAuth;
+    
+    // Zapewnienie wielojęzyczności przycisku po wylogowaniu
+    const lang = window.currentLang || 'pl';
+    if (lang === 'ua') btn.textContent = 'Увійти';
+    else if (lang === 'en') btn.textContent = 'Log in';
+    else btn.textContent = 'Zaloguj się';
+  }
 }
 </script>
 </body>
 </html>
+
+
+
