@@ -807,6 +807,425 @@ footer a:hover { color: var(--yellow); }
   text-align: center;
 }
 
+/* === KOSZYK — IKONA W NAV === */
+.nav-koszyk {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.koszyk-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--yellow);
+  background: transparent;
+  border: 2px solid var(--yellow);
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.koszyk-btn:hover { background: var(--yellow); color: var(--black); }
+.koszyk-licznik {
+  background: var(--red);
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Special Elite', monospace;
+  display: none;
+}
+.koszyk-licznik.widoczny { display: flex; }
+
+.auth-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  background: transparent;
+  border: 1.5px solid #555;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+.auth-btn:hover { color: var(--yellow); border-color: var(--yellow); }
+
+/* === PANEL BOCZNY KOSZYK === */
+.koszyk-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.koszyk-overlay.otwarty { display: block; opacity: 1; }
+
+.koszyk-panel {
+  position: fixed;
+  top: 0;
+  right: -480px;
+  width: min(480px, 100vw);
+  height: 100vh;
+  background: var(--cream);
+  border-left: var(--border-thick);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+.koszyk-panel.otwarty { right: 0; }
+
+.koszyk-naglowek {
+  background: var(--black);
+  color: var(--yellow);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border);
+  flex-shrink: 0;
+}
+.koszyk-naglowek h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+}
+.koszyk-zamknij {
+  background: transparent;
+  border: 2px solid #555;
+  color: #aaa;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.koszyk-zamknij:hover { border-color: var(--red); color: var(--red); }
+
+.koszyk-lista {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.koszyk-pusty {
+  text-align: center;
+  padding: 48px 24px;
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #888;
+}
+
+.koszyk-pozycja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 2px solid var(--cream2);
+}
+.koszyk-poz-nazwa {
+  flex: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+.koszyk-poz-cena {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--red);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.koszyk-qty {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--black);
+  background: var(--cream2);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  transition: background 0.1s;
+}
+.qty-btn:hover { background: var(--yellow); }
+.qty-num {
+  width: 28px;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 14px;
+}
+
+.koszyk-stopka {
+  padding: 16px 24px;
+  border-top: var(--border-thick);
+  background: var(--cream2);
+  flex-shrink: 0;
+}
+.koszyk-suma {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.koszyk-suma span {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.koszyk-suma strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+}
+.btn-zamow {
+  width: 100%;
+  background: var(--red);
+  color: var(--yellow);
+  border: var(--border-thick);
+  padding: 14px;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+  letter-spacing: 0.04em;
+}
+.btn-zamow:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--black); }
+.btn-zamow:disabled { background: #aaa; cursor: not-allowed; box-shadow: none; transform: none; }
+
+/* === MODAL AUTH === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.otwarty { display: flex; }
+
+.modal {
+  background: var(--cream);
+  border: var(--border-thick);
+  box-shadow: 8px 8px 0 var(--black);
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-naglowek {
+  background: var(--red);
+  color: var(--yellow);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border);
+}
+.modal-naglowek h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+}
+.modal-body { padding: 28px 24px; }
+
+.modal-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 24px;
+  border: var(--border);
+}
+.modal-tab {
+  padding: 10px;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: var(--cream2);
+  border: none;
+  transition: background 0.15s;
+}
+.modal-tab.active { background: var(--yellow); font-weight: bold; }
+
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.modal-error {
+  background: #fee;
+  border: 2px solid var(--red);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--red);
+  display: none;
+}
+.modal-error.widoczny { display: block; }
+.modal-sukces {
+  background: #efe;
+  border: 2px solid green;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: green;
+  display: none;
+  text-align: center;
+}
+.modal-sukces.widoczny { display: block; }
+
+/* === MODAL ZAMÓWIENIE === */
+.zamow-sekcja { margin-bottom: 20px; }
+.zamow-sekcja h4 {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--yellow);
+}
+.radio-group { display: flex; flex-direction: column; gap: 8px; }
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+  font-size: 14px;
+}
+.radio-label:hover { background: var(--cream2); }
+.radio-label input { accent-color: var(--red); }
+
+.zamow-podsumowanie {
+  background: var(--black);
+  color: var(--yellow);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.zamow-poz {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 1px solid #333;
+}
+.zamow-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* === PANEL UŻYTKOWNIKA === */
+.user-panel {
+  position: fixed;
+  top: 0;
+  left: -480px;
+  width: min(480px, 100vw);
+  height: 100vh;
+  background: var(--cream);
+  border-right: var(--border-thick);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+.user-panel.otwarty { left: 0; }
+.user-panel-naglowek {
+  background: var(--black);
+  color: var(--yellow);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border);
+}
+.user-panel-naglowek h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+}
+.user-panel-body { flex: 1; overflow-y: auto; padding: 20px; }
+.zamowienie-karta {
+  border: var(--border);
+  margin-bottom: 16px;
+  box-shadow: 3px 3px 0 var(--black);
+}
+.zamowienie-naglowek {
+  background: var(--yellow);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border);
+}
+.zamowienie-naglowek span {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+.zamowienie-status {
+  background: var(--red);
+  color: #fff;
+  padding: 2px 8px;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.zamowienie-body { padding: 12px 16px; }
+.zamowienie-body p { font-size: 13px; margin-bottom: 4px; }
+
+/* === DODAJ DO KOSZYKA BTN === */
+.btn-dodaj {
+  width: 100%;
+  margin-top: 12px;
+  background: var(--black);
+  color: var(--yellow);
+  border: var(--border);
+  padding: 9px 14px;
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.btn-dodaj:hover { background: var(--yellow); color: var(--black); }
+.btn-dodaj.dodano { background: green; color: #fff; border-color: green; }
+
 /* === TRANSLATIONS === */
 [data-lang] { display: none; }
 [data-lang].active { display: block; }
@@ -875,6 +1294,20 @@ footer a:hover { color: var(--yellow); }
     <span data-lang-inline="ua">Контакт</span>
     <span data-lang-inline="en">Contact</span>
   </a>
+  <div class="nav-koszyk">
+    <button class="auth-btn" id="authNavBtn" onclick="otworzAuth()">
+      <span data-lang="pl" class="active">Zaloguj się</span>
+      <span data-lang-inline="ua">Увійти</span>
+      <span data-lang-inline="en">Log in</span>
+    </button>
+    <button class="koszyk-btn" onclick="otworzKoszyk()" aria-label="Koszyk">
+      🛒
+      <span data-lang="pl" class="active">Koszyk</span>
+      <span data-lang-inline="ua">Кошик</span>
+      <span data-lang-inline="en">Cart</span>
+      <span class="koszyk-licznik" id="koszykLicznik">0</span>
+    </button>
+  </div>
 </nav>
 
 <hr class="divider"/>
@@ -1472,5 +1905,426 @@ document.addEventListener('DOMContentLoaded', ladujProdukty);
 const _origSetLang = window.setLang;
 </script>
 
+<!-- OVERLAY -->
+<div class="koszyk-overlay" id="koszykOverlay" onclick="zamknijKoszyk()"></div>
+
+<!-- PANEL KOSZYK -->
+<div class="koszyk-panel" id="koszykPanel" role="dialog" aria-label="Koszyk">
+  <div class="koszyk-naglowek">
+    <h3>🛒 Koszyk</h3>
+    <button class="koszyk-zamknij" onclick="zamknijKoszyk()">✕</button>
+  </div>
+  <div class="koszyk-lista" id="koszykLista"></div>
+  <div class="koszyk-stopka">
+    <div class="koszyk-suma">
+      <span>Razem:</span>
+      <strong id="koszykSuma">0.00 zł</strong>
+    </div>
+    <button class="btn-zamow" id="btnZamow" onclick="otworzZamowienie()">Zamów →</button>
+  </div>
+</div>
+
+<!-- PANEL UŻYTKOWNIK -->
+<div class="koszyk-overlay" id="userOverlay" onclick="zamknijUserPanel()"></div>
+<div class="user-panel" id="userPanel" role="dialog">
+  <div class="user-panel-naglowek">
+    <h3>👤 <span id="userEmail" style="font-size:14px;font-family:'Special Elite',monospace;"></span></h3>
+    <button class="koszyk-zamknij" onclick="zamknijUserPanel()">✕</button>
+  </div>
+  <div class="user-panel-body">
+    <button onclick="wyloguj()" style="width:100%;margin-bottom:24px;" class="submit-btn">Wyloguj się</button>
+    <div class="section-label" style="margin-bottom:12px;">— Twoje zamówienia</div>
+    <div id="zamowieniaLista"></div>
+  </div>
+</div>
+
+<!-- MODAL AUTH -->
+<div class="modal-overlay" id="authModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-naglowek">
+      <h3>Logowanie / Rejestracja</h3>
+      <button class="koszyk-zamknij" onclick="zamknijAuth()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tabLogin" onclick="przelaczTab('login')">Logowanie</button>
+        <button class="modal-tab" id="tabRegister" onclick="przelaczTab('register')">Rejestracja</button>
+      </div>
+      <div class="modal-error" id="authError"></div>
+      <div class="modal-sukces" id="authSukces"></div>
+      <form class="modal-form" id="authForm" onsubmit="handleAuth(event)">
+        <div class="form-group">
+          <label for="authEmail">Email</label>
+          <input type="email" id="authEmail" required autocomplete="email" placeholder="jan@example.com"/>
+        </div>
+        <div class="form-group">
+          <label for="authHaslo">Hasło</label>
+          <input type="password" id="authHaslo" required autocomplete="current-password" placeholder="••••••••"/>
+        </div>
+        <div class="form-group" id="powtorzHasloGroup" style="display:none">
+          <label for="authHaslo2">Powtórz hasło</label>
+          <input type="password" id="authHaslo2" autocomplete="new-password" placeholder="••••••••"/>
+        </div>
+        <button type="submit" class="submit-btn" id="authSubmitBtn">Zaloguj się →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ZAMÓWIENIE -->
+<div class="modal-overlay" id="zamowModal" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:520px;">
+    <div class="modal-naglowek">
+      <h3>Składam zamówienie</h3>
+      <button class="koszyk-zamknij" onclick="zamknijZamowienie()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-error" id="zamowError"></div>
+      <div class="modal-sukces" id="zamowSukces"></div>
+      <form class="modal-form" id="zamowForm" onsubmit="zlozZamowienie(event)">
+        <div class="zamow-sekcja">
+          <h4>Twoje dane</h4>
+          <div class="form-group">
+            <label for="zamImie">Imię i nazwisko</label>
+            <input type="text" id="zamImie" required placeholder="Jan Kowalski"/>
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label for="zamTel">Telefon</label>
+            <input type="tel" id="zamTel" required placeholder="600 123 456"/>
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label for="zamEmailField">Email</label>
+            <input type="email" id="zamEmailField" required placeholder="jan@example.com"/>
+          </div>
+        </div>
+        <div class="zamow-sekcja">
+          <h4>Sposób odbioru</h4>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="odbior" value="rabka" required/>
+              🏪 Rabka-Zdrój — ul. Zakopiańska 4
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="odbior" value="skawa"/>
+              🏪 Skawa 573
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="odbior" value="dostawa"/>
+              🚚 Dostawa pod adres
+            </label>
+          </div>
+          <div class="form-group" id="adresGroup" style="display:none;margin-top:12px">
+            <label for="zamAdres">Adres dostawy</label>
+            <input type="text" id="zamAdres" placeholder="ul. Przykładowa 1, 34-700 Rabka-Zdrój"/>
+          </div>
+        </div>
+        <div class="zamow-sekcja">
+          <h4>Uwagi</h4>
+          <textarea id="zamUwagi" style="width:100%;min-height:70px;border:var(--border);padding:10px;font-family:inherit;font-size:14px;" placeholder="Opcjonalnie..."></textarea>
+        </div>
+        <div class="zamow-sekcja">
+          <h4>Podsumowanie</h4>
+          <div class="zamow-podsumowanie" id="zamowPodsumowanie"></div>
+        </div>
+        <button type="submit" class="submit-btn" id="zamowSubmitBtn">Złóż zamówienie →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://jqarrtdzdpnvcwgvbvlr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Wbd9Jt7DGhdA1jxpYzZEXg_mo0DRJ82';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let koszyk = JSON.parse(localStorage.getItem('tani_koszyk') || '[]');
+let zalogowanyUzytkownik = null;
+let aktywnyTab = 'login';
+window.currentLang = 'pl';
+
+// === JĘZYK ===
+function setLang(lang) {
+  window.currentLang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  document.querySelectorAll('[data-lang-inline]').forEach(el => {
+    el.classList.toggle('active', el.dataset.langInline === lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+  document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+}
+
+// === PRODUKTY ===
+const ETYKIETY_KATEGORII = {
+  'warzywa':   { pl: '🥬 Warzywa i owoce', ua: '🥬 Овочі та фрукти', en: '🥬 Vegetables & fruit' },
+  'nabiał':    { pl: '🥛 Nabiał i jaja', ua: '🥛 Молочні продукти', en: '🥛 Dairy & eggs' },
+  'pieczywo':  { pl: '🍞 Pieczywo', ua: '🍞 Хліб і випічка', en: '🍞 Bread & pastry' },
+  'chemia':    { pl: '🧴 Chemia domowa', ua: '🧴 Побутова хімія', en: '🧴 Household chemicals' },
+  'napoje':    { pl: '🧃 Napoje i przekąski', ua: '🧃 Напої і снеки', en: '🧃 Drinks & snacks' },
+  'szkolne':   { pl: '🏫 Artykuły szkolne', ua: '🏫 Шкільне приладдя', en: '🏫 School supplies' },
+  'porządki':  { pl: '🧹 Sprzęt porządkowy', ua: '🧹 Засоби для прибирання', en: '🧹 Cleaning tools' },
+  'zwierzęta': { pl: '🐾 Karma dla zwierząt', ua: '🐾 Корм для тварин', en: '🐾 Pet food' },
+};
+
+function etykietaKat(kat, lang) {
+  return ETYKIETY_KATEGORII[(kat||'').toLowerCase().trim()]?.[lang] || kat;
+}
+
+async function ladujProdukty() {
+  const lang = window.currentLang || 'pl';
+  const kontener = document.getElementById('produkty-container');
+  const { data: produkty, error } = await db.from('produkty').select('*')
+    .eq('dostepny', true).order('kategoria').order('nazwa');
+  if (error || !produkty?.length) {
+    kontener.innerHTML = `<p class="brak-produktow">${error ? 'Błąd ładowania.' : 'Brak produktów — zajrzyj wkrótce!'}</p>`;
+    return;
+  }
+  const kategorie = {};
+  produkty.forEach(p => {
+    const k = (p.kategoria || 'inne').toLowerCase().trim();
+    if (!kategorie[k]) kategorie[k] = [];
+    kategorie[k].push(p);
+  });
+  let html = '';
+  for (const [kat, items] of Object.entries(kategorie)) {
+    html += `<div class="kat-sekcja"><h3 class="kat-tytul">${etykietaKat(kat, lang)}</h3><div class="produkty-grid">`;
+    items.forEach(p => {
+      const maP = p.cena_przed_przecena && Number(p.cena_przed_przecena) > Number(p.cena);
+      const stara = maP ? `<span class="stara-cena">${Number(p.cena_przed_przecena).toFixed(2)} zł</span>` : '';
+      const badge = maP ? `<div class="przecena-badge">PROMOCJA</div>` : '';
+      const opis = p.opis ? `<div class="produkt-opis">${p.opis}</div>` : '';
+      html += `<div class="produkt-karta${maP?' przecena':''}">
+        ${badge}<div class="produkt-nazwa">${p.nazwa}</div>${opis}
+        <div class="produkt-cena">${stara}<span class="nowa-cena">${Number(p.cena).toFixed(2)} zł</span></div>
+        <button class="btn-dodaj" onclick="dodajDoKoszyka(${p.id},'${p.nazwa.replace(/'/g,"\\'")}',${p.cena})" id="btn-${p.id}">+ Dodaj do koszyka</button>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+  kontener.innerHTML = html;
+}
+
+// === KOSZYK ===
+function zapiszKoszyk() { localStorage.setItem('tani_koszyk', JSON.stringify(koszyk)); }
+
+function dodajDoKoszyka(id, nazwa, cena) {
+  const idx = koszyk.findIndex(x => x.id === id);
+  if (idx >= 0) koszyk[idx].qty++;
+  else koszyk.push({ id, nazwa, cena: Number(cena), qty: 1 });
+  zapiszKoszyk(); aktualizujLicznik(); renderKoszyk();
+  const btn = document.getElementById(`btn-${id}`);
+  if (btn) {
+    btn.classList.add('dodano'); btn.textContent = '✓ Dodano!';
+    setTimeout(() => { btn.classList.remove('dodano'); btn.textContent = '+ Dodaj do koszyka'; }, 1500);
+  }
+}
+
+function zmienIlosc(id, delta) {
+  const idx = koszyk.findIndex(x => x.id === id);
+  if (idx < 0) return;
+  koszyk[idx].qty += delta;
+  if (koszyk[idx].qty <= 0) koszyk.splice(idx, 1);
+  zapiszKoszyk(); aktualizujLicznik(); renderKoszyk();
+}
+
+function aktualizujLicznik() {
+  const n = koszyk.reduce((s, x) => s + x.qty, 0);
+  const el = document.getElementById('koszykLicznik');
+  el.textContent = n;
+  el.classList.toggle('widoczny', n > 0);
+  const btnZ = document.getElementById('btnZamow');
+  if (btnZ) btnZ.disabled = n === 0;
+}
+
+function renderKoszyk() {
+  const lista = document.getElementById('koszykLista');
+  const suma = koszyk.reduce((s, x) => s + x.cena * x.qty, 0);
+  document.getElementById('koszykSuma').textContent = suma.toFixed(2) + ' zł';
+  if (!koszyk.length) { lista.innerHTML = '<div class="koszyk-pusty">🛒 Koszyk jest pusty</div>'; return; }
+  lista.innerHTML = koszyk.map(p => `
+    <div class="koszyk-pozycja">
+      <div class="koszyk-poz-nazwa">${p.nazwa}</div>
+      <div class="koszyk-qty">
+        <button class="qty-btn" onclick="zmienIlosc(${p.id},-1)">−</button>
+        <span class="qty-num">${p.qty}</span>
+        <button class="qty-btn" onclick="zmienIlosc(${p.id},1)">+</button>
+      </div>
+      <div class="koszyk-poz-cena">${(p.cena*p.qty).toFixed(2)} zł</div>
+    </div>`).join('');
+}
+
+function otworzKoszyk() {
+  document.getElementById('koszykPanel').classList.add('otwarty');
+  document.getElementById('koszykOverlay').classList.add('otwarty');
+  renderKoszyk();
+}
+function zamknijKoszyk() {
+  document.getElementById('koszykPanel').classList.remove('otwarty');
+  document.getElementById('koszykOverlay').classList.remove('otwarty');
+}
+
+// === AUTH ===
+function otworzAuth() { document.getElementById('authModal').classList.add('otwarty'); }
+function zamknijAuth() { document.getElementById('authModal').classList.remove('otwarty'); }
+
+function przelaczTab(tab) {
+  aktywnyTab = tab;
+  document.getElementById('tabLogin').classList.toggle('active', tab==='login');
+  document.getElementById('tabRegister').classList.toggle('active', tab==='register');
+  document.getElementById('powtorzHasloGroup').style.display = tab==='register' ? 'flex' : 'none';
+  document.getElementById('authSubmitBtn').textContent = tab==='login' ? 'Zaloguj się →' : 'Zarejestruj się →';
+  document.getElementById('authError').classList.remove('widoczny');
+  document.getElementById('authSukces').classList.remove('widoczny');
+}
+
+async function handleAuth(e) {
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  const haslo = document.getElementById('authHaslo').value;
+  const err = document.getElementById('authError');
+  const suk = document.getElementById('authSukces');
+  err.classList.remove('widoczny'); suk.classList.remove('widoczny');
+  if (aktywnyTab === 'register') {
+    const haslo2 = document.getElementById('authHaslo2').value;
+    if (haslo !== haslo2) { err.textContent = 'Hasła nie są identyczne.'; err.classList.add('widoczny'); return; }
+    if (haslo.length < 6) { err.textContent = 'Hasło musi mieć min. 6 znaków.'; err.classList.add('widoczny'); return; }
+    const { error } = await db.auth.signUp({ email, password: haslo });
+    if (error) { err.textContent = error.message; err.classList.add('widoczny'); return; }
+    suk.textContent = '✅ Konto utworzone! Sprawdź email aby potwierdzić.';
+    suk.classList.add('widoczny');
+  } else {
+    const { error } = await db.auth.signInWithPassword({ email, password: haslo });
+    if (error) { err.textContent = 'Nieprawidłowy email lub hasło.'; err.classList.add('widoczny'); return; }
+    zamknijAuth();
+  }
+}
+
+async function wyloguj() { await db.auth.signOut(); zamknijUserPanel(); }
+
+function otworzUserPanel() {
+  document.getElementById('userPanel').classList.add('otwarty');
+  document.getElementById('userOverlay').classList.add('otwarty');
+  ladujZamowienia();
+}
+function zamknijUserPanel() {
+  document.getElementById('userPanel').classList.remove('otwarty');
+  document.getElementById('userOverlay').classList.remove('otwarty');
+}
+
+async function ladujZamowienia() {
+  const lista = document.getElementById('zamowieniaLista');
+  lista.innerHTML = '<p style="font-size:13px;color:#888;">Ładowanie...</p>';
+  const { data, error } = await db.from('zamowienia').select('*').order('created_at', { ascending: false });
+  if (error || !data?.length) { lista.innerHTML = '<p style="font-size:13px;color:#888;font-family:\'Special Elite\',monospace;">Brak zamówień.</p>'; return; }
+  lista.innerHTML = data.map(z => {
+    const poz = z.produkty || [];
+    const dt = new Date(z.created_at).toLocaleDateString('pl-PL');
+    return `<div class="zamowienie-karta">
+      <div class="zamowienie-naglowek"><span>${dt}</span><span class="zamowienie-status">${z.status}</span></div>
+      <div class="zamowienie-body">
+        ${poz.map(p=>`<p>• ${p.nazwa} ×${p.qty} — ${(p.cena*p.qty).toFixed(2)} zł</p>`).join('')}
+        <p style="margin-top:8px;font-weight:bold;">Suma: ${Number(z.suma).toFixed(2)} zł</p>
+        <p style="font-size:12px;color:#888;">${z.sposob_odbioru==='dostawa'?'🚚 Dostawa: '+z.adres:'🏪 Odbiór: '+z.sklep}</p>
+      </div></div>`;
+  }).join('');
+}
+
+// === ZAMÓWIENIE ===
+function otworzZamowienie() {
+  if (!zalogowanyUzytkownik) { zamknijKoszyk(); otworzAuth(); return; }
+  zamknijKoszyk();
+  document.getElementById('zamEmailField').value = zalogowanyUzytkownik.email;
+  const suma = koszyk.reduce((s,x)=>s+x.cena*x.qty,0);
+  document.getElementById('zamowPodsumowanie').innerHTML =
+    koszyk.map(p=>`<div class="zamow-poz"><span>${p.nazwa} ×${p.qty}</span><span>${(p.cena*p.qty).toFixed(2)} zł</span></div>`).join('')+
+    `<div class="zamow-total"><span>Razem</span><span>${suma.toFixed(2)} zł</span></div>`;
+  document.getElementById('zamowModal').classList.add('otwarty');
+  document.getElementById('zamowError').classList.remove('widoczny');
+  document.getElementById('zamowSukces').classList.remove('widoczny');
+  document.getElementById('zamowForm').style.display = 'flex';
+  document.querySelectorAll('input[name="odbior"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('adresGroup').style.display = r.value==='dostawa'?'flex':'none';
+    });
+  });
+}
+function zamknijZamowienie() { document.getElementById('zamowModal').classList.remove('otwarty'); }
+
+async function zlozZamowienie(e) {
+  e.preventDefault();
+  const btn = document.getElementById('zamowSubmitBtn');
+  const err = document.getElementById('zamowError');
+  const suk = document.getElementById('zamowSukces');
+  err.classList.remove('widoczny');
+  const odbior = document.querySelector('input[name="odbior"]:checked')?.value;
+  if (!odbior) { err.textContent = 'Wybierz sposób odbioru.'; err.classList.add('widoczny'); return; }
+  const adres = document.getElementById('zamAdres').value.trim();
+  if (odbior==='dostawa' && !adres) { err.textContent = 'Podaj adres dostawy.'; err.classList.add('widoczny'); return; }
+  btn.disabled = true; btn.textContent = '⏳ Wysyłam...';
+  const suma = koszyk.reduce((s,x)=>s+x.cena*x.qty,0);
+  const { error } = await db.from('zamowienia').insert({
+    user_id: zalogowanyUzytkownik.id,
+    imie_nazwisko: document.getElementById('zamImie').value.trim(),
+    telefon: document.getElementById('zamTel').value.trim(),
+    email: document.getElementById('zamEmailField').value.trim(),
+    sposob_odbioru: odbior,
+    sklep: odbior!=='dostawa'?(odbior==='rabka'?'Rabka-Zdrój':'Skawa'):null,
+    adres: odbior==='dostawa'?adres:null,
+    uwagi: document.getElementById('zamUwagi').value.trim(),
+    produkty: koszyk, suma, status: 'nowe'
+  });
+  if (error) {
+    err.textContent = 'Błąd zapisu. Spróbuj ponownie.'; err.classList.add('widoczny');
+    btn.disabled = false; btn.textContent = 'Złóż zamówienie →'; return;
+  }
+  suk.textContent = '✅ Zamówienie złożone! Skontaktujemy się z Tobą wkrótce.';
+  suk.classList.add('widoczny');
+  document.getElementById('zamowForm').style.display = 'none';
+  koszyk = []; zapiszKoszyk(); aktualizujLicznik();
+}
+
+// === FORMULARZ KONTAKTOWY ===
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  const lang = window.currentLang;
+  if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
+    alert(lang==='pl'?'Proszę wypełnić wszystkie pola.':lang==='ua'?'Заповніть усі поля.':'Please fill in all fields.'); return;
+  }
+  form.style.display = 'none'; success.style.display = 'block'; setLang(lang);
+}
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', async () => {
+  setLang('pl');
+  aktualizujLicznik();
+  ladujProdukty();
+  const { data: { session } } = await db.auth.getSession();
+  if (session?.user) ustawZalogowanego(session.user);
+  db.auth.onAuthStateChange((_e, session) => {
+    if (session?.user) ustawZalogowanego(session.user);
+    else ustawWylogowanego();
+  });
+});
+
+function ustawZalogowanego(user) {
+  zalogowanyUzytkownik = user;
+  const btn = document.getElementById('authNavBtn');
+  btn.onclick = otworzUserPanel;
+  btn.textContent = '👤 ' + user.email.split('@')[0];
+  document.getElementById('userEmail').textContent = user.email;
+}
+function ustawWylogowanego() {
+  zalogowanyUzytkownik = null;
+  const btn = document.getElementById('authNavBtn');
+  btn.onclick = otworzAuth;
+  btn.textContent = 'Zaloguj się';
+}
+</script>
 </body>
 </html>
